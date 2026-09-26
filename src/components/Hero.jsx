@@ -1,31 +1,32 @@
+import { motion } from "framer-motion";
+
 function Hero() {
   return (
-    <section className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-      <p className="font-sans text-sm tracking-wide text-slate dark:text-tan mb-4">
-        Bayonne, Pays Basque
-      </p>
-      <h1 className="font-serif text-5xl md:text-6xl leading-tight max-w-3xl">
-        Perrine Calatayud, développeuse web junior en reconversion.
-      </h1>
-      <p className="mt-6 text-lg text-ink/70 dark:text-cream/70 max-w-xl">
-        Après 17 ans dans le retail chez Inditex et Balibaris, j'ai transformé
-        ma passion pour le développement en métier. Aujourd'hui je construis des
-        applications web full-stack avec React et Node.js.
-      </p>
-      <div className="mt-8 flex gap-4">
-        <a
-          href="#projects"
-          className="inline-flex items-center rounded-full bg-ink dark:bg-cream text-cream dark:text-ink px-5 py-2.5 text-sm hover:bg-clay dark:hover:bg-clay dark:hover:text-cream transition-colors"
-        >
-          Voir mes projets
-        </a>
-        <a
-          href="#contact"
-          className="inline-flex items-center rounded-full border border-ink/20 dark:border-cream/20 px-5 py-2.5 text-sm hover:border-clay hover:text-clay transition-colors"
-        >
-          Me contacter
-        </a>
-      </div>
+    <section className="min-h-screen flex flex-col justify-center px-6 pt-40 pb-24 max-w-6xl mx-auto">
+      <motion.h1
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className="font-serif text-6xl md:text-7xl lg:text-[100px] leading-none tracking-tight mb-16 text-tan"
+      >
+        Perrine Calatayud
+      </motion.h1>
+
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-3xl"
+      >
+        <p className="font-serif text-2xl md:text-3xl lg:text-[34px] leading-snug text-ink dark:text-cream mb-6">
+          J'ai passé 17 ans à évoluer dans la vente et le management. Un jour,
+          je me suis demandé si j'avais envie de continuer ma vie sans jamais
+          explorer ma vraie passion pour le développement.
+        </p>
+        <p className="font-serif text-2xl md:text-3xl lg:text-[34px] leading-snug text-clay">
+          La réponse a été non.
+        </p>
+      </motion.div>
     </section>
   );
 }

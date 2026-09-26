@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Sun, Moon, Download, Menu, X } from "lucide-react";
+import { useState } from "react";
 import { useDarkMode } from "../hooks/useDarkMode";
 
 const NAV_LINKS = [
-  { label: "à propos", href: "#top" },
-  { label: "projets", href: "#projects" },
-  { label: "parcours", href: "#parcours" },
-  { label: "contact", href: "#contact" },
+  { label: "accueil", to: "/" },
+  { label: "à propos", to: "/about" },
+  { label: "expertise", to: "/expertise" },
+  { label: "contact", to: "/contact" },
 ];
-function Header() {
+
+function Navigation() {
   const [isDark, setIsDark] = useDarkMode();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -21,15 +23,18 @@ function Header() {
       className="fixed top-0 left-0 right-0 z-50 bg-cream/90 dark:bg-ink/90 backdrop-blur-sm border-b border-ink/10 dark:border-cream/10"
     >
       <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-        <nav className="hidden md:flex items-center gap-6 text-sm tracking-wide">
+        <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-ink/70 dark:text-cream/70 hover:text-clay dark:hover:text-clay transition-colors"
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === "/"}
+              className={({ isActive }) =>
+                `transition-colors ${isActive ? "text-clay" : "text-ink/70 dark:text-cream/70 hover:text-clay dark:hover:text-clay"}`
+              }
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -51,36 +56,12 @@ function Header() {
             {isDark ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          <a
-            href="#top"
-            aria-label="Retour en haut de page"
-            className="p-2 hover:opacity-60 transition-opacity"
+          <span
+            className="font-serif text-lg text-ink dark:text-cream hidden sm:block"
+            style={{ writingMode: "vertical-rl" }}
           >
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 40 40"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <line
-                x1="8"
-                y1="8"
-                x2="32"
-                y2="32"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <line
-                x1="32"
-                y1="8"
-                x2="8"
-                y2="32"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-            </svg>
-          </a>
+            Perrine
+          </span>
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -95,14 +76,15 @@ function Header() {
       {menuOpen && (
         <nav className="md:hidden flex flex-col gap-1 px-6 pb-4">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+            <NavLink
+              key={link.to}
+              to={link.to}
+              end={link.to === "/"}
               onClick={() => setMenuOpen(false)}
               className="py-2 text-sm text-ink/70 dark:text-cream/70"
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
           <a
             href="/CV-Perrine-Calatayud.pdf"
@@ -117,4 +99,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Navigation;
