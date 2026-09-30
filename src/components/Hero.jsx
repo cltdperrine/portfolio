@@ -20,8 +20,8 @@ function Hero() {
       >
         <p className="font-serif text-2xl md:text-3xl lg:text-[34px] leading-snug text-ink dark:text-cream mb-6">
           J'ai passé 17 ans à évoluer dans la vente et le management. Un jour,
-          je me suis demandé si j'avais envie de continuer ma vie sans jamais
-          explorer ma vraie passion pour le développement.
+          je me suis demandé si j'avais envie de continuer sans jamais explorer
+          ma vraie passion pour le développement.
         </p>
         <p className="font-serif text-2xl md:text-3xl lg:text-[34px] leading-snug text-clay">
           La réponse a été non.

@@ -35,7 +35,7 @@ function Header() {
 
         <div className="flex items-center gap-5">
           <a
-            href="/CV-Perrine-Calatayud.pdf"
+            href="/Perrine Calatayud Support.pdf"
             download
             className="hidden sm:inline-flex items-center gap-2 text-sm border border-ink/20 dark:border-cream/20 rounded-full px-4 py-1.5 hover:border-clay hover:text-clay transition-colors"
           >
